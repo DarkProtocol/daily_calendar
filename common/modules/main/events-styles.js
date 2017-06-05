@@ -76,7 +76,7 @@ export const styles = StyleSheet.create({
     	backgroundColor: '#6B52AE',
     	borderRadius: 25,
     	justifyContent: 'center',
-    	marginRight: 20,
+    	marginRight: 10,
     },
 
     plusButtonText: {
@@ -90,8 +90,16 @@ export const styles = StyleSheet.create({
     addButton: {
     	width: 50,
     	height: 50,
-    	backgroundColor: '#ccc',
+    	backgroundColor: '#2CB044',
     	borderRadius: 25,
+    	justifyContent: 'center',
     },
+
+    buttonImage: {
+    	width: 30,
+    	height: 30,
+    	marginLeft: 'auto',
+    	marginRight: 'auto',
+    }
 
 });

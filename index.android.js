@@ -1,16 +1,33 @@
 'use strict';
+import React from 'react';
 
-import React, { Component } from 'react';
 import {
   AppRegistry,
 } from 'react-native';
 
-import {Main} from './common/modules/main/Main'
+import { StackNavigator } from 'react-navigation';
 
-export default class dailyCalendar extends Component {
-    render() {
-        return <Main/>;
-    }
-};
+import {Main} from './common/modules/main/Main';
+import {Events} from './common/modules/events/Events';
+import {AddEvent} from './common/modules/add-event/AddEvent';
 
-AppRegistry.registerComponent('daily_calendar', () => dailyCalendar);
+const DailyStack = StackNavigator({
+
+	
+	
+	Main: { 
+		screen: Main,
+	},
+
+	Events: {
+		screen: Events,
+	},
+
+	AddEvent: {
+		screen: AddEvent,
+	},
+
+});
+
+AppRegistry.registerComponent('daily_calendar', () => DailyStack);
+

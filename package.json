@@ -9,7 +9,11 @@
   "dependencies": {
     "react": "16.0.0-alpha.6",
     "react-native": "0.44.0",
-    "react-native-scrollable-tab-view": "^0.6.6"
+    "react-native-autogrow-input": "^0.1.2",
+    "react-native-autogrow-textinput": "^4.0.0",
+    "react-native-scrollable-tab-view": "^0.6.6",
+    "react-navigation": "^1.0.0-beta.11",
+    "rn-viewpager": "^1.2.3"
   },
   "devDependencies": {
     "babel-jest": "20.0.3",

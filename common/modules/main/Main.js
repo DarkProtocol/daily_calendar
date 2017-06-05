@@ -8,15 +8,18 @@ import {
 import {styles} from './styles';
 import {DayEvents} from './DayEvents';
 
-var ScrollableTabView = require('react-native-scrollable-tab-view');
+import {ViewPager} from 'rn-viewpager';
 
 export class Main extends Component {
 
+	static navigationOptions = {
+	    header: null,
+	 }
 
 	constructor(props) {
 	    super(props);
 			
-	    const YEAR_OFFSET = 4;
+	    const YEAR_OFFSET = 2;
 
 	    Date.prototype.daysInMonth = function() {
 			return 32 - new Date(this.getFullYear(), this.getMonth(), 32).getDate();
@@ -64,6 +67,8 @@ export class Main extends Component {
 			}
 		}
 
+		global.changeCurrentDate = this.changeCurrentDate.bind(this);
+
 	}
 
 	render() {
@@ -95,7 +100,7 @@ export class Main extends Component {
 					</View>
 					
 
-					<ScrollableTabView 
+					<ViewPager 
 						renderTabBar={false} 
 						style={styles.calendarTabs} 
 						initialPage={this.initialPage}
@@ -118,11 +123,16 @@ export class Main extends Component {
 						})
 					}
 
-					</ScrollableTabView>
+					</ViewPager>
 
 				</View>
 				<View style={styles.eventsContainer}>
-					<DayEvents day={this.state.currentDay} month={this.state.currentMonth} year={this.state.currentYear}/>
+					<DayEvents 
+						day={this.state.currentDay} 
+						month={this.state.currentMonth} 
+						year={this.state.currentYear}
+						navigate={this.props.navigation.navigate.bind(this)}
+					/>
 				</View>
 			</View>
 		);
@@ -334,7 +344,6 @@ export class Main extends Component {
 			currentYear: year,
 		});
 
-		console.log(this.state);
 	}
 
 	getMonth(month) {

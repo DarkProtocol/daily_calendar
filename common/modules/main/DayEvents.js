@@ -6,6 +6,7 @@ import {
   ActivityIndicator,
   ScrollView,
   AsyncStorage,
+  Image,
 } from 'react-native';
 
 import {styles} from './events-styles';
@@ -74,19 +75,35 @@ export class DayEvents extends Component {
 	            		return item;
 	            	})
 	            	:
-	            	<Text style = {styles.notEvents}> Событий нет </Text>
+	            	<Text style = {styles.notEvents} key="0"> Событий нет </Text>
 	            	}
             	</ScrollView>
             	
             </View>
 
             <View style={styles.buttonsConatiner}>
-            	<TouchableHighlight style={styles.plusButton}>
+            	<TouchableHighlight style={styles.plusButton} onPress={() => {
+        			this.props.navigate('AddEvent', {
+            			day: this.props.day,
+            			month: this.props.month,
+            			year: this.props.year,
+            		});
+            	}}>
             		<Text style={styles.plusButtonText}>+</Text>
             	</TouchableHighlight>
 
-            	<TouchableHighlight style={styles.addButton}>
-            		<Text style={styles.plusButtonTet}>+</Text>
+            	<TouchableHighlight style={styles.addButton} onPress={() => {
+
+            		if (events.length > 0) {
+            			this.props.navigate('Events', {
+	            			day: this.props.day,
+	            			month: this.props.month,
+	            			year: this.props.year,
+	            		});
+            		}
+            		
+            	}}>
+            		<Image style={styles.buttonImage} source={require('./images/calendar.png')}/>
             	</TouchableHighlight>
 
             </View>
@@ -169,10 +186,6 @@ export class DayEvents extends Component {
 				return 'Декабря';
 				break;
 		}
-	}
-
-	renderEvents() {
-
 	}
 
 }
